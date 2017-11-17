@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Editor</title>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/ace/src-min-noconflict/ace.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/initAce.js"></script>
+</head>
+<body>
+<div id="pyInputPane">
+          <div id="codeInputWarnings">Write code in
+            <select id="pythonVersionSelector">
+              <option value="2">Python 2.7</option>
+              <option value="3">Python 3.3</option>
+              <option value="js">JavaScript ES6</option>
+            </select>
+            <img src="img/btn.png" height="20" width="20" onclick="">
+            <span style="color: #888; font-size: 8pt; float: right;">(drag lower right corner to resize code editor)</span>
+          </div>
+
+          <div id="codeInputPane"></div>
+          <div id="legendDiv"></div>
+          <div id="executionSlider" style="margin-top: 10px;"></div>
+
+          <!-- copied and pasted from pytutor.js
+               TODO: integrate all this together and modularize -->
+
+          <div id="vcrControls" style="display: none;">
+            <button id="jmpFirstInstr", type="button">&lt;&lt; First</button>
+            <button id="jmpStepBack", type="button">&lt; Back</button>
+            <span id="curInstr"></span>
+            <button id="jmpStepFwd", type="button">Forward &gt;</button>
+            <button id="jmpLastInstr", type="button">Last &gt;&gt;</button>
+          </div>
+
+          <div id="rawUserInputDiv" style="display: none;">
+            <span id="userInputPromptStr"></span>
+            <input type="text" id="raw_input_textbox" size="30"/>
+            <button id="raw_input_submit_btn">Submit</button>
+          </div>
+
+          <div id="frontendErrorOutput"></div>
+        </div>
+</body>
+</html>
