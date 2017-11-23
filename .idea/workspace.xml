@@ -306,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1511397041042</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="pyCode main class complete">
+      <created>1511397054828</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1511397054828</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -351,6 +358,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pyCode main class complete" />
     <option name="LAST_COMMIT_MESSAGE" value="pyCode main class complete" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
