@@ -1,4 +1,4 @@
-from bottle import route, get, request, run, template, static_file
+from bottle import route, get, request, run, template, static_file, abort
 import json
 import ast
 import pg_logger
@@ -33,8 +33,9 @@ def runscript():
     if isinstance(missionInfo,list):
         print(missionInfo)
     else:
-        outString.write('Get mission info error!')
-        return outString.getvalue()
+        # outString.write('Get mission info error!')
+        # return outString.getvalue()
+        abort(404, 'Get mission info error!')
     userCode = 'from gameObj import *\ninit("{0}")\n'.format(missionNum)+request.query.usercode
     print(userCode)
     codeList = userCode.split('\n')
