@@ -12,11 +12,13 @@ app = application = Bottle()
 
 codeStr = 'monkey.step(10)\ngoat.hit()\nmonkey.turn(15)\nmonkey.goto(bananas[0])\nfor m in monkeys:\n    m.turn(15)\n'
 
-@route('/<filepath:path>')
+
+@app.route('/<filepath:path>')
 def index(filepath):
     return static_file(filepath, root='.')
 
-@get('/runscript')
+
+@app.get('/runscript')
 def runscript():
     outString = StringIO()
     try:
@@ -119,4 +121,4 @@ def runscript():
 if __name__ == '__main__':
     codeStr = 'from gameObj import *\ninit(0)\n' + codeStr
     #pg_logger.exec_script_str_local(codeStr, '', False, False, recvTrace)
-    run(host='127.0.0.1', port=8888,reloader=True)
+    run(application, host='127.0.0.1', port=8888, reloader=True)
