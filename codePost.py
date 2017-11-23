@@ -31,13 +31,14 @@ def runscript():
     except:
         missionInfo = None
     if isinstance(missionInfo,list):
-        print(missionInfo)
+        # print(missionInfo)
+        pass
     else:
         # outString.write('Get mission info error!')
         # return outString.getvalue()
         abort(404, 'Get mission info error!')
     userCode = 'from gameObj import *\ninit("{0}")\n'.format(missionNum)+request.query.usercode
-    print(userCode)
+    #print(userCode)
     codeList = userCode.split('\n')
     mission = request.query.mission
     respList = []
@@ -60,7 +61,7 @@ def runscript():
         for linedata in outTrace:
             if len(outTrace) < 1:
                 continue
-            print(linedata)
+            #print(linedata)
             lNum = linedata['line']-2
             commStr = codeList[lNum+1].strip()
             execinfo = 'OK'
@@ -81,6 +82,9 @@ def runscript():
                 #print(commStr)
                 globals = linedata['globals']
                 heap = linedata['heap']
+                # encoded_locals = linedata['encoded_locals']
+                stack_to_render = linedata['stack_to_render']
+                func_name = linedata['func_name']
 
                 codeNode = ast.parse(commStr)
                 nodeList = ast.walk(codeNode)
@@ -89,6 +93,9 @@ def runscript():
                         #print(node.id)
                         try:
                             nodeProper = globals[node.id]
+                        except:
+                            nodeProper = stack_to_render[0]['encoded_locals'][node.id]
+                        try:
                             if isinstance(nodeProper,list):
                                 nodeName = heap[nodeProper[-1]]
                                 #print(nodeName)
@@ -104,7 +111,8 @@ def runscript():
                                     commStr = commStr.replace(node.id + ')', commName + ')')
                                     #print(commStr)
                         except Exception as e:
-                            print(e)
+                            print('Get NodeName Error: {0}'.format(e))
+
                 #print(commStr)
                 respData = {'line': lNum, 'command': commStr, 'execinfo': execinfo}
             if (len(respData) > 0) and (lNum > 0) and (linedata['event'] != 'return'):
