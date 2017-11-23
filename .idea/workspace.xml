@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6e555e2-f697-4982-a101-6d8ec08de3bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$" afterPath="$PROJECT_DIR$" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codePost.py" afterPath="$PROJECT_DIR$/codePost.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameObj.py" afterPath="$PROJECT_DIR$/gameObj.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/initAce.js" afterPath="$PROJECT_DIR$/js/initAce.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/missionConfig.py" afterPath="$PROJECT_DIR$/missionConfig.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -305,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1510885989961</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="pyCode main class complete">
+      <created>1511397041042</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1511397041042</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
