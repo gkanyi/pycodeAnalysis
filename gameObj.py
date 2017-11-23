@@ -1,14 +1,20 @@
 import missionConfig
-bananas = []
+# Game animal
 goats = []
 turtles = []
 crocodiles = []
+beavers = []
 tigers = []
 bears = []
-
+# Game object
+bananas = []
+bridges = []
+islands = []
+rafts = []
+bushes = []
 
 def init(missionNum):
-    missionInfo = missionConfig.missionInfo[missionNum]
+    missionInfo = missionConfig.missionInfo[str(missionNum)]
     for obj in missionInfo:
         objName = obj[0]
         objArray = objDict[objName][0]
@@ -60,6 +66,12 @@ class bananaObj(gameObj):
 
     def frozen(self):
         if self.status[:6] == 'frozen':
+            return True
+        else:
+            return False
+
+    def rotten(self):
+        if self.status[-5:] == 'rotten':
             return True
         else:
             return False
@@ -136,12 +148,23 @@ objDict = {
     'goats': [goats, goatObj, 'goats[{0}]'],
     'turtles': [turtles, turtleObj, 'turtles[{0}]'],
     'crocodiles': [crocodiles, crocodileObj, 'crocodiles[{0}]'],
+    'beavers': [beavers, mover, 'beavers[{0}]'],
     'tigers': [tigers, predatorObj, 'tigers[{0}]'],
-    'bears': [bears, predatorObj, 'bears[{0}]']
+    'bears': [bears, predatorObj, 'bears[{0}]'],
+    'bridges': [bridges, gameObj, 'bridges[{0}]'],
+    'islands': [islands, gameObj, 'islands[{0}]'],
+    'rafts': [rafts, gameObj, 'rafts[{0}]'],
+    'bushes': [bushes, gameObj, 'bushes[{0}]']
 }
 monkey = monkeyObj('monkey')
 goat = goatObj('goat')
 banana = bananaObj('banana')
 turtle = turtleObj('turtle')
+crocodile = crocodileObj('crocodile')
+beaver = mover('beaver')
 tiger = predatorObj('tiger')
 bear = predatorObj('bear')
+bridge = gameObj('bridge')
+island = gameObj('island')
+raft = gameObj('raft')
+bush = gameObj('bush')

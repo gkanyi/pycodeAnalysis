@@ -2,6 +2,7 @@ from bottle import route, get, request, run, template, static_file
 import json
 import ast
 import pg_logger
+import missionConfig
 try:
     from StringIO import StringIO
 except ImportError:
@@ -20,8 +21,21 @@ def index(filepath):
 @get('/runscript')
 def runscript():
     outString = StringIO()
-    missionNum = request.query.mission
-    userCode = 'from gameObj import *\ninit({0})\n'.format(missionNum)+request.query.usercode
+    try:
+        missionNum = str(request.query.mission)
+    except:
+        missionNum = '0'
+
+    try:
+        missionInfo = missionConfig.missionInfo[missionNum]
+    except:
+        missionInfo = None
+    if isinstance(missionInfo,list):
+        print(missionInfo)
+    else:
+        outString.write('Get mission info error!')
+        return outString.getvalue()
+    userCode = 'from gameObj import *\ninit("{0}")\n'.format(missionNum)+request.query.usercode
     print(userCode)
     codeList = userCode.split('\n')
     mission = request.query.mission

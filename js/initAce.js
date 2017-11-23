@@ -19,10 +19,12 @@ $(function(){
             bindKey:  {win: 'Ctrl-R',  mac: 'Command-R'},
             exec: function (codeEditor) {
                 console.log(codeEditor.getValue());
+                var mNum = $("#mission").val();
+                console.log(mNum);
                 runUrl = '/runscript';
                 runData = {
                     usercode: codeEditor.getValue(),
-                    mission: 2
+                    mission: mNum.toString()
                 };
                 $.get(runUrl, runData, function (result) {
                     console.log(result);
