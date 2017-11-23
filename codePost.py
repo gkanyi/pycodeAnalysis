@@ -1,4 +1,4 @@
-from bottle import route, get, request, run, template, static_file, abort
+from bottle import route, get, request, run, template, static_file, abort, Bottle
 import json
 import ast
 import pg_logger
@@ -8,6 +8,7 @@ try:
 except ImportError:
     from io import StringIO
 
+app = application = Bottle()
 
 codeStr = 'monkey.step(10)\ngoat.hit()\nmonkey.turn(15)\nmonkey.goto(bananas[0])\nfor m in monkeys:\n    m.turn(15)\n'
 
