@@ -61,7 +61,7 @@ def runscript():
         for linedata in outTrace:
             if len(outTrace) < 1:
                 continue
-            #print(linedata)
+            print(linedata)
             lNum = linedata['line']-2
             commStr = codeList[lNum+1].strip()
             execinfo = 'OK'
@@ -73,6 +73,8 @@ def runscript():
                 execerror = True
                 respData = {'line': lNum, 'command': commStr, 'execinfo': execinfo}
 
+            elif (linedata['event'] == 'call'):
+                respList.pop(-1)
             elif (commStr[-1:] == ':'):
                 pass
             elif (len(linedata['globals']) < 2):
