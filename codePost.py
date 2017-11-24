@@ -61,7 +61,7 @@ def runscript():
         for linedata in outTrace:
             if len(outTrace) < 1:
                 continue
-            print(linedata)
+            # print(linedata)
             lNum = linedata['line']-2
             commStr = codeList[lNum+1].strip()
             execinfo = 'OK'
