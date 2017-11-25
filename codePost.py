@@ -75,6 +75,8 @@ def runscript():
 
             elif (linedata['event'] == 'call'):
                 respList.pop(-1)
+            elif (commStr[:5] == 'class'):
+                respData = {'line': lNum, 'command': commStr, 'execinfo': "Class was not supported..."}
             elif (commStr[-1:] == ':'):
                 pass
             elif (len(linedata['globals']) < 2):
@@ -94,9 +96,13 @@ def runscript():
                     if isinstance(node, ast.Name):
                         #print(node.id)
                         try:
-                            nodeProper = globals[node.id]
-                        except:
                             nodeProper = stack_to_render[0]['encoded_locals'][node.id]
+                        except:
+                            try:
+                                nodeProper = globals[node.id]
+                            except Exception as e:
+                                print(repr(e))
+                                continue
                         try:
                             if isinstance(nodeProper,list):
                                 nodeName = heap[nodeProper[-1]]
