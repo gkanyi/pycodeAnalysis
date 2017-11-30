@@ -21,7 +21,7 @@ $(function(){
                 console.log(codeEditor.getValue());
                 var mNum = $("#mission").val();
                 console.log(mNum);
-                runUrl = '/runscript';
+                runUrl = 'http://pycode.raccooncode.com/runscript';
                 runData = {
                     usercode: codeEditor.getValue(),
                     mission: mNum.toString()

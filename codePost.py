@@ -1,4 +1,4 @@
-from bottle import route, get, request, run, template, static_file, abort, Bottle
+from bottle import route, get, request, run, template, static_file, abort, Bottle, response
 import json
 import ast
 import pg_logger
@@ -13,12 +13,27 @@ app = application = Bottle()
 codeStr = 'monkey.step(10)\ngoat.hit()\nmonkey.turn(15)\nmonkey.goto(bananas[0])\nfor m in monkeys:\n    m.turn(15)\n'
 
 
+def allow_cross_domain(fn):
+    def _enable_cross(*args, **kwargs):
+        # Set cross headers
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,OPTIONS'
+        allow_headers = 'Referer, Accept, Origin, User-Agent'
+        response.headers['Access-Control-Allow-Headers'] = allow_headers
+        if request.method != 'OPTIONS':
+            # actual request; reply with the actual response
+            return fn(*args, **kwargs)
+
+    return _enable_cross
+
 @app.route('/<filepath:path>')
+@allow_cross_domain
 def index(filepath):
     return static_file(filepath, root='.')
 
 
 @app.get('/runscript')
+@allow_cross_domain
 def runscript():
     outString = StringIO()
     try:
