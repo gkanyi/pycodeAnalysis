@@ -46,6 +46,12 @@ class gameObj(object):
         self._x = pos['x']
         self._y = pos['y']
 
+    def distanceTo(self, obj):
+        if isinstance(obj, gameObj):
+            return 15
+        else:
+            raise TypeError("distanceTo() take a game object argument.")
+
     @property
     def x(self):
         return self._xhy
