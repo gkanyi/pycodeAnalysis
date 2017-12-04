@@ -36,6 +36,10 @@ def distanceTo(obj):
     else:
         raise TypeError("distanceTo() take a game object argument.")
 
+
+def commandEnd():
+    pass
+
 class gameObj(object):
     def __init__(self, name):
         self.name = name

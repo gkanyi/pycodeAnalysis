@@ -141,6 +141,7 @@ def runscript():
             if (len(respData) > 0) and (lNum > 0) and (linedata['event'] != 'return'):
                 respList.append(respData)
         #outString.write(json.dumps(outTrace, ensure_ascii=False))
+        respList.append({'line': -1, 'command': 'commandEnd()', 'execinfo': 'END'})
         outString.write(json.dumps(respList,ensure_ascii=False))
 
     pg_logger.exec_script_str_local(userCode,'',False,False,recvTrace)
