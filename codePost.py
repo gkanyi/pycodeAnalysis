@@ -67,8 +67,11 @@ def runscript():
         '''
         if len(outTrace) > 998:
             execerror = True
+            '''
             execinfo = 'instruction_limit_reached.Stopped after running 1000 steps. Please shorten your code,\n'
             execinfo += 'since Python Tutor is not designed to handle long-running code.'
+            '''
+            execinfo = 'OVERFLOW'
             respData = {'line': 1, 'command': codeList[2], 'execinfo': execinfo}
             respList.append(respData)
             outTrace = []
