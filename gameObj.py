@@ -1,17 +1,15 @@
 import missionConfig
-# Game animal
-goats = []
-turtles = []
-crocodiles = []
-beavers = []
-tigers = []
-bears = []
+
+# Game mover
+boats = []
+rafts = []
+# tigers = []
+# bears = []
+
 # Game object
-bananas = []
+coins = []
 bridges = []
 islands = []
-rafts = []
-bushes = []
 
 def init(missionNum):
     missionInfo = missionConfig.missionInfo[str(missionNum)]
@@ -58,12 +56,14 @@ class gameObj(object):
 
     @property
     def x(self):
-        return self._xhy
+        return self._x
 
     @property
     def y(self):
         return self._y
 
+
+'''
 class bananaObj(gameObj):
     def setStatus(self, status):
         self.status = status
@@ -85,16 +85,34 @@ class bananaObj(gameObj):
             return True
         else:
             return False
+'''
+
+
+class coinObj(gameObj):
+    def setStatus(self, status):
+        self.status = status
+
+    def gold(self):
+        if self.status[-4:] == 'gold':
+            return True
+        else:
+            return False
+
+    def silver(self):
+        if self.status[:6] == 'silver':
+            return True
+        else:
+            return False
 
 class mover(gameObj):
-    def step(self,distance):
+    def move(self, distance):
         if isinstance(distance, (int,float)):
             pass
         else:
-            raise TypeError("step() take a number argument.")
+            raise TypeError("move() take a number argument.")
 
-    def turn(self,angle):
-        if isinstance(angle, (int,float)):
+    def turn(self, direction):
+        if isinstance(direction, (str)):
             pass
         else:
             raise TypeError("turn() take a number argument.")
@@ -105,28 +123,36 @@ class mover(gameObj):
         else:
             raise TypeError("goto() take a game object argument.")
 
-    def turnTo(self,obj):
+    def turnLeft(self, obj):
         if isinstance(obj, gameObj):
             pass
         else:
-            raise TypeError("turnTo() take a game object argument.")
+            raise TypeError("turnLeft() take a game object argument.")
 
-class monkeyObj(mover):
-    def toss(self,obj):
-        pass
+    def turnRight(self, obj):
+        if isinstance(obj, gameObj):
+            pass
+        else:
+            raise TypeError("turnRight() take a game object argument.")
 
-class goatObj(mover):
+
+class heroObj(mover):
     def __init__(self, name):
         self.name = name
-    def hit(self):
+
+    def attack(self, obj):
         pass
 
-class turtleObj(mover):
-    def setPos(self, pos):
-        self.pos.x = pos.x
-        self.pos.y = pos.y
 
-class crocodileObj(mover):
+class petObj(mover):
+    def __init__(self, name):
+        self.name = name
+
+    def attack(self):
+        pass
+
+
+class boatObj(mover):
     def setPos(self, pos):
         self.pos.x = pos.x
         self.pos.y = pos.y
@@ -154,27 +180,17 @@ class predatorObj(gameObj):
         return self._sleeping
 
 objDict = {
-    'bananas':[bananas, bananaObj, 'bananas[{0}]'],
+    'coins': [coins, coinObj, 'coins[{0}]'],
     'goats': [goats, goatObj, 'goats[{0}]'],
-    'turtles': [turtles, turtleObj, 'turtles[{0}]'],
-    'crocodiles': [crocodiles, crocodileObj, 'crocodiles[{0}]'],
-    'beavers': [beavers, mover, 'beavers[{0}]'],
-    'tigers': [tigers, predatorObj, 'tigers[{0}]'],
-    'bears': [bears, predatorObj, 'bears[{0}]'],
+    'boats': [boats, boatObj, 'boats[{0}]'],
     'bridges': [bridges, gameObj, 'bridges[{0}]'],
     'islands': [islands, gameObj, 'islands[{0}]'],
-    'rafts': [rafts, gameObj, 'rafts[{0}]'],
-    'bushes': [bushes, gameObj, 'bushes[{0}]']
+    'rafts': [rafts, gameObj, 'rafts[{0}]']
 }
-monkey = monkeyObj('monkey')
-goat = goatObj('goat')
-banana = bananaObj('banana')
-turtle = turtleObj('turtle')
-crocodile = crocodileObj('crocodile')
-beaver = mover('beaver')
-tiger = predatorObj('tiger')
-bear = predatorObj('bear')
+hero = heroObj('hero')
+pet = petObj('pet')
+coin = coinObj('coin')
+boat = boatObj('boat')
 bridge = gameObj('bridge')
 island = gameObj('island')
 raft = gameObj('raft')
-bush = gameObj('bush')
