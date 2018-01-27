@@ -10,7 +10,8 @@ except ImportError:
 
 app = application = Bottle()
 
-codeStr = 'monkey.step(10)\ngoat.hit()\nmonkey.turn(15)\nmonkey.goto(bananas[0])\nfor m in monkeys:\n    m.turn(15)\n'
+
+# codeStr = 'monkey.step(10)\ngoat.hit()\nmonkey.turn(15)\nmonkey.goto(bananas[0])\nfor m in monkeys:\n    m.turn(15)\n'
 
 
 def allow_cross_domain(fn):
