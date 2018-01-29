@@ -181,7 +181,6 @@ class predatorObj(gameObj):
 
 objDict = {
     'coins': [coins, coinObj, 'coins[{0}]'],
-    'goats': [goats, goatObj, 'goats[{0}]'],
     'boats': [boats, boatObj, 'boats[{0}]'],
     'bridges': [bridges, gameObj, 'bridges[{0}]'],
     'islands': [islands, gameObj, 'islands[{0}]'],

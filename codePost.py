@@ -155,6 +155,6 @@ def runscript():
 
 
 if __name__ == '__main__':
-    codeStr = 'from gameObj import *\ninit(0)\n' + codeStr
+    # codeStr = 'from gameObj import *\ninit(0)\n' + codeStr
     #pg_logger.exec_script_str_local(codeStr, '', False, False, recvTrace)
     run(application, host='127.0.0.1', port=8888, reloader=True)
